@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Saathi – Inclusive Digital Companion</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root{--bg:#f6f8f6;--sf:#fff;--sf2:#f0f4f1;--bd:#dde5de;--tx:#0f1a12;--mu:#5b6b5f;--ac:#0f8a3b;--acx:#fff;--glow:transparent;--fs:17px;--ff:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--mono:"JetBrains Mono",ui-monospace,Menlo,monospace;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="hc"]){--bg:#080b09;--sf:#0e1310;--sf2:#131a15;--bd:#202b23;--tx:#ecf3ed;--mu:#8b998f;--ac:#4ade80;--acx:#04140a;--glow:rgba(74,222,128,.12);color-scheme:dark}}
+:root[data-theme="hc"]{--bg:#000;--sf:#000;--sf2:#111;--bd:#fff;--tx:#fff;--mu:#fff;--ac:#ffe600;--acx:#000;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(800px 420px at 80% -8%,var(--glow),transparent 65%),var(--bg);color:var(--tx);font:400 var(--fs)/1.6 var(--ff);-webkit-font-smoothing:antialiased}
+body.dys{--ff:"Comic Sans MS","Trebuchet MS",Verdana,sans-serif;letter-spacing:.04em;word-spacing:.12em;line-height:1.9}
+.w{max-width:1040px;margin-inline:auto;padding:0 20px}
+.ic{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+nav{position:sticky;top:0;z-index:5;backdrop-filter:blur(12px);background:color-mix(in srgb,var(--bg) 82%,transparent);border-bottom:1px solid var(--bd);padding-top:env(safe-area-inset-top,0px)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+nav .w{display:flex;align-items:center;gap:12px;height:60px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.05em;letter-spacing:-.01em;margin-right:auto}
+.logo svg{width:30px;height:30px}
+.tools{display:flex;gap:6px;align-items:center}
+button,select,textarea,input{font:inherit;color:var(--tx)}
+.ib,select{height:38px;border:1px solid var(--bd);background:var(--sf);border-radius:10px;padding:0 10px;font-size:.85em;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:border-color .15s,background .15s}
+.ib:hover,select:hover{border-color:var(--ac)}
+.ib[aria-pressed="true"]{background:var(--ac);color:var(--acx);border-color:var(--ac)}
+:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+.hero{padding:56px 0 28px}
+.eye{font:500 .7em var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ac)}
+h1{font-weight:700;font-size:clamp(2rem,5.5vw,3.3rem);line-height:1.08;letter-spacing:-.035em;margin:.35em 0 .4em;max-width:16ch}
+.lead{color:var(--mu);max-width:58ch;margin:0 0 18px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-size:.78em;color:var(--mu);border:1px solid var(--bd);border-radius:99px;padding:4px 12px;background:var(--sf)}
+.seg{display:inline-flex;background:var(--sf2);border:1px solid var(--bd);border-radius:12px;padding:4px;margin:8px 0 18px}
+.seg button{border:0;background:none;padding:8px 18px;border-radius:9px;cursor:pointer;font-weight:600;font-size:.88em;color:var(--mu)}
+.seg button[aria-selected="true"]{background:var(--sf);color:var(--tx);box-shadow:0 1px 3px rgba(0,0,0,.25)}
+.g{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:800px){.g{grid-template-columns:1fr}}
+.card{background:var(--sf);border:1px solid var(--bd);border-radius:16px;display:flex;flex-direction:column;min-height:360px}
+.ch{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid var(--bd);font-weight:600;font-size:.9em}
+.ch .sp{margin-left:auto;display:flex;gap:6px;align-items:center}
+.cb{padding:16px;flex:1;display:flex;flex-direction:column;gap:12px}
+.cf{padding:12px 16px;border-top:1px solid var(--bd);display:flex;gap:8px;flex-wrap:wrap}
+textarea,input[type=text],#ans{width:100%;background:var(--sf2);border:1px solid var(--bd);border-radius:10px;padding:12px;resize:vertical}
+textarea{flex:1;min-height:220px;border:0;background:none;padding:0;resize:none}
+textarea:focus,#ans:focus{outline:0}
+#ans:focus{border-color:var(--ac)}
+.btn{display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 16px;border-radius:10px;border:1px solid var(--bd);background:var(--sf);cursor:pointer;font-weight:600;font-size:.88em;transition:transform .15s,border-color .15s}
+.btn:hover{border-color:var(--ac);transform:translateY(-1px)}
+.btn.p{background:var(--ac);color:var(--acx);border-color:var(--ac)}
+.empty{margin:auto;text-align:center;color:var(--mu);max-width:30ch}
+.empty .ic{width:34px;height:34px;color:var(--ac);margin-bottom:8px}
+#res p{margin:0 0 10px;padding:10px 14px;border-radius:10px;background:var(--sf2);border-left:3px solid var(--ac)}
+mark{background:color-mix(in srgb,var(--ac) 22%,transparent);color:inherit;border-radius:4px;padding:0 3px}
+.wd.on{background:var(--ac);color:var(--acx);border-radius:4px;padding:0 2px}
+.kp{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
+.kp div{background:var(--sf);border:1px solid var(--bd);border-radius:12px;padding:12px 14px}
+.kp b{display:block;font-size:1.35em;letter-spacing:-.02em}
+.kp small{color:var(--mu);font-size:.75em}
+details{margin-top:12px;color:var(--mu);font-size:.85em}summary{cursor:pointer}dt{font-weight:600;color:var(--tx)}dd{margin:0 0 6px}
+.fm{max-width:640px;margin-inline:auto}
+.st{display:flex;gap:6px}.st i{flex:1;height:4px;border-radius:4px;background:var(--bd)}.st i.d{background:var(--ac)}
+#q{font-size:1.5em;font-weight:600;letter-spacing:-.02em;line-height:1.3;margin:6px 0}
+.sm{display:grid;grid-template-columns:auto 1fr;gap:6px 16px}.sm dt{color:var(--mu);font-weight:500}.sm dd{margin:0;font-weight:600}
+.mu{color:var(--mu);font-size:.8em;min-height:1.4em}
+#toast{position:fixed;bottom:calc(20px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);background:var(--tx);color:var(--bg);padding:10px 18px;border-radius:10px;font-size:.85em;font-weight:600;opacity:0;transition:opacity .2s;pointer-events:none}
+#toast.on{opacity:1}
+.sr{position:absolute;left:-9999px}
+footer{border-top:1px solid var(--bd);margin-top:48px;padding:20px 0 28px;color:var(--mu);font-size:.8em}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<svg style="display:none" aria-hidden="true">
+<symbol id="i-play" viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></symbol>
+<symbol id="i-stop" viewBox="0 0 24 24"><path d="M6 6h12v12H6z"/></symbol>
+<symbol id="i-mic" viewBox="0 0 24 24"><path d="M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3zM19 11a7 7 0 0 1-14 0M12 18v3"/></symbol>
+<symbol id="i-vol" viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9H4zM17 8a5 5 0 0 1 0 8"/></symbol>
+<symbol id="i-wand" viewBox="0 0 24 24"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></symbol>
+<symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+<symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+<symbol id="i-con" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3v18"/></symbol>
+<symbol id="i-type" viewBox="0 0 24 24"><path d="M4 7V5h16v2M12 5v14M9 19h6"/></symbol>
+<symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></symbol>
+<symbol id="i-r" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+<symbol id="i-l" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol>
+<symbol id="i-doc" viewBox="0 0 24 24"><path d="M7 3h8l4 4v14H7zM15 3v4h4"/></symbol>
+<symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></symbol>
+</svg>
+
+<nav><div class="w">
+<div class="logo"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="12" cy="16" r="8" fill="none" stroke="var(--ac)" stroke-width="2.5"/><circle cx="20" cy="16" r="8" fill="none" stroke="var(--tx)" stroke-width="2.5" opacity=".75"/></svg>Saathi</div>
+<div class="tools" role="group" aria-label="Accessibility settings">
+<label class="sr" for="lang">Language</label>
+<select id="lang"><option value="en">English</option><option value="hi">हिन्दी</option></select>
+<button class="ib" id="aMinus" aria-label="Smaller text"><svg class="ic"><use href="#i-minus"/></svg>A</button>
+<button class="ib" id="aPlus" aria-label="Larger text"><svg class="ic"><use href="#i-plus"/></svg>A</button>
+<button class="ib" id="dys" aria-pressed="false" aria-label="Dyslexia-friendly font" title="Dyslexia-friendly"><svg class="ic"><use href="#i-type"/></svg></button>
+<button class="ib" id="hc" aria-pressed="false" aria-label="High contrast" title="High contrast"><svg class="ic"><use href="#i-con"/></svg></button>
+</div></div></nav>
+
+<div class="w">
+<header class="hero">
+<div class="eye">Bootup Hackathon 2026 · Inclusive digital experiences</div>
+<h1 data-i="h">Digital content, made understandable.</h1>
+<p class="lead" data-i="sub"></p>
+<div class="chips"><span class="chip" data-i="c1"></span><span class="chip" data-i="c2"></span><span class="chip" data-i="c3"></span></div>
+</header>
+
+<div class="seg" role="tablist">
+<button role="tab" id="t1" aria-selected="true" data-i="tab1"></button>
+<button role="tab" id="t2" aria-selected="false" data-i="tab2"></button>
+</div>
+
+<main>
+<section id="p1" role="tabpanel" aria-labelledby="t1">
+<div class="g">
+<div class="card">
+<div class="ch"><svg class="ic"><use href="#i-doc"/></svg><span data-i="orig"></span></div>
+<div class="cb"><label class="sr" for="src">Text to simplify</label><textarea id="src"></textarea></div>
+<div class="cf"><button class="btn p" id="go"><svg class="ic"><use href="#i-wand"/></svg><span data-i="go"></span></button><button class="btn" id="sample" data-i="sample"></button></div>
+</div>
+<div class="card">
+<div class="ch"><svg class="ic"><use href="#i-wand"/></svg><span data-i="plain"></span>
+<div class="sp"><button class="ib" id="say" aria-label="Read aloud"><svg class="ic"><use href="#i-play"/></svg></button><button class="ib" id="stop" aria-label="Stop"><svg class="ic"><use href="#i-stop"/></svg></button><label class="sr" for="rate">Speed</label><input id="rate" type="range" min=".6" max="1.3" step=".1" value=".9" style="width:80px"></div></div>
+<div class="cb" aria-live="polite"><div class="empty" id="empty"><svg class="ic"><use href="#i-wand"/></svg><div data-i="empty"></div></div><div id="res"></div></div>
+</div></div>
+<div class="kp"><div><b id="k1">–</b><small data-i="k1"></small></div><div><b id="k2">–</b><small data-i="k2"></small></div><div><b id="k3">–</b><small data-i="k3"></small></div></div>
+<details><summary data-i="gl"></summary><dl id="gloss"></dl></details>
+</section>
+
+<section id="p2" role="tabpanel" aria-labelledby="t2" hidden>
+<div class="card fm"><div class="cb">
+<div class="st" id="st" aria-hidden="true"></div>
+<div class="mu" id="stn"></div>
+<div id="q" aria-live="polite"></div>
+<label class="sr" for="ans">Your answer</label>
+<input type="text" id="ans" autocomplete="off">
+<div class="mu" id="mic"></div>
+<dl class="sm" id="sum"></dl>
+</div>
+<div class="cf">
+<button class="btn" id="back"><svg class="ic"><use href="#i-l"/></svg><span data-i="back"></span></button>
+<button class="btn" id="listen"><svg class="ic"><use href="#i-vol"/></svg><span data-i="listen"></span></button>
+<button class="btn" id="speak"><svg class="ic"><use href="#i-mic"/></svg><span data-i="speak"></span></button>
+<button class="btn p" id="next" style="margin-left:auto"><span id="nl"></span><svg class="ic"><use href="#i-r"/></svg></button>
+</div></div>
+</section>
+</main>
+<footer>Saathi · Runs entirely in your browser · No data leaves your device</footer>
+</div>
+<div id="toast" role="status"></div>
+
+<script>
+(()=>{
+const $=i=>document.getElementById(i);
+const UI={
+en:{h:"Digital content, made understandable.",sub:"Saathi turns jargon into plain language, reads it aloud in English or Hindi, and guides people through forms one question at a time.",c1:"Runs in your browser",c2:"No sign-up",c3:"Private by design",tab1:"Simplify text",tab2:"Guided form",orig:"Original text",plain:"Plain version",ph:"Paste a bank notice, government rule or app terms here…",go:"Simplify",sample:"Try an example",empty:"Your simplified text will appear here.",k1:"Words in original",k2:"Avg. sentence length",k3:"Hard words replaced",gl:"See replaced words",listen:"Hear question",speak:"Speak",next:"Next",back:"Back",done:"All done. Check your details:",copy:"Copy details",copied:"Copied to clipboard",nomic:"Voice input is not supported here. Please type.",lis:"Listening…",empt:"Paste some text first.",step:"Question"},
+hi:{h:"डिजिटल सामग्री, अब आसान।",sub:"साथी कठिन शब्दों को सरल भाषा में बदलता है, हिन्दी या अंग्रेज़ी में पढ़कर सुनाता है और फ़ॉर्म भरने में एक-एक सवाल पर साथ देता है।",c1:"आपके ब्राउज़र में चलता है",c2:"साइन-अप नहीं",c3:"निजी और सुरक्षित",tab1:"पाठ आसान करें",tab2:"गाइडेड फ़ॉर्म",orig:"मूल पाठ",plain:"आसान रूप",ph:"बैंक नोटिस, सरकारी नियम या ऐप की शर्तें यहाँ चिपकाएँ…",go:"आसान बनाएँ",sample:"उदाहरण देखें",empty:"आसान किया हुआ पाठ यहाँ दिखेगा।",k1:"मूल शब्द",k2:"औसत वाक्य लंबाई",k3:"बदले गए कठिन शब्द",gl:"बदले गए शब्द देखें",listen:"सवाल सुनें",speak:"बोलें",next:"आगे",back:"पीछे",done:"हो गया। अपनी जानकारी देखें:",copy:"जानकारी कॉपी करें",copied:"कॉपी हो गया",nomic:"यहाँ आवाज़ इनपुट उपलब्ध नहीं है। कृपया टाइप करें।",lis:"सुन रहे हैं…",empt:"पहले कुछ पाठ चिपकाएँ।",step:"सवाल"}};
+const Q={en:["What is your name?","How old are you?","Which village or city do you live in?","What is your phone number?","What help do you need? (for example: pension, ration card, scholarship)"],hi:["आपका नाम क्या है?","आपकी उम्र क्या है?","आप किस गाँव या शहर में रहते हैं?","आपका फ़ोन नंबर क्या है?","आपको किस मदद की ज़रूरत है? (जैसे: पेंशन, राशन कार्ड, छात्रवृत्ति)"]};
+const L={en:["Name","Age","Village / City","Phone","Help needed"],hi:["नाम","उम्र","गाँव / शहर","फ़ोन","ज़रूरी मदद"]};
+const G=[[/\bauthenticat(e|ion)\b/gi,"log in"],[/\bterminate(d|s)?\b/gi,"end"],[/\bpursuant to\b/gi,"under"],[/\bnotwithstanding\b/gi,"even though"],[/\bforthwith\b/gi,"right away"],[/\bremit(tance)?\b/gi,"send money"],[/\bliable\b/gi,"responsible"],[/\bsubsequent(ly)?\b/gi,"later"],[/\bprior to\b/gi,"before"],[/\bin the event that\b/gi,"if"],[/\bcommence(d)?\b/gi,"start"],[/\bobtain\b/gi,"get"],[/\bnecessitate(s)?\b/gi,"need"],[/\bKYC\b/g,"identity check (KYC)"],[/\bOTP\b/g,"one-time code (OTP)"],[/\bdisclose\b/gi,"tell"],[/\bundertake\b/gi,"promise"],[/\bfailure to\b/gi,"if you do not"],[/\bcomply\b/gi,"follow the rules"],[/\bdeem(ed)?\b/gi,"treat as"]];
+const SAMPLE="Pursuant to RBI guidelines, account holders must complete KYC prior to 31 December, failure to which the account shall be deemed inactive and transactions may be terminated forthwith. Customers are liable to disclose valid identity documents, and subsequent remittance will necessitate OTP authentication.";
+let lang="en",fs=17,step=0,ans=[],tok=0,tt;
+const t=k=>UI[lang][k],vc=()=>lang==="hi"?"hi-IN":"en-IN";
+const toast=m=>{const e=$("toast");e.textContent=m;e.classList.add("on");clearTimeout(tt);tt=setTimeout(()=>e.classList.remove("on"),1800)};
+function apply(){document.querySelectorAll("[data-i]").forEach(e=>{const v=UI[lang][e.dataset.i];if(v!=null)e.textContent=v});$("src").placeholder=t("ph");document.documentElement.lang=lang;showQ()}
+$("lang").onchange=e=>{lang=e.target.value;apply()};
+$("aPlus").onclick=()=>{fs=Math.min(28,fs+2);document.documentElement.style.setProperty("--fs",fs+"px")};
+$("aMinus").onclick=()=>{fs=Math.max(14,fs-2);document.documentElement.style.setProperty("--fs",fs+"px")};
+$("dys").onclick=e=>{const b=e.currentTarget;b.setAttribute("aria-pressed",document.body.classList.toggle("dys"))};
+$("hc").onclick=e=>{const r=document.documentElement,on=r.dataset.theme!=="hc";on?r.dataset.theme="hc":r.removeAttribute("data-theme");e.currentTarget.setAttribute("aria-pressed",on)};
+function tab(n){[1,2].forEach(i=>{$("p"+i).hidden=i!=n;$("t"+i).setAttribute("aria-selected",i==n)})}
+$("t1").onclick=()=>tab(1);$("t2").onclick=()=>tab(2);
+const esc=s=>s.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+$("sample").onclick=()=>{$("src").value=SAMPLE;simplify()};$("go").onclick=simplify;
+function simplify(){
+const s=$("src").value.trim();if(!s){toast(t("empt"));return}
+const used={};let o=s,n=0;
+G.forEach(g=>{o=o.replace(g[0],m=>{used[m.toLowerCase()]=g[1];n++;return"\u0001"+g[1]+"\u0002"})});
+const res=[];
+o.split(/(?<=[.!?])\s+/).forEach(p=>{p.split(/;\s+|,\s+(?:and|but|which|failure|subsequent)\s+|,\s+(?=[a-z]+\s+(?:must|shall|may|will))/i).forEach(c=>{c=c.trim();if(!c)return;c=c.replace(/\bshall\b/gi,"will");c=c[0].toUpperCase()+c.slice(1);if(!/[.!?]$/.test(c))c+=".";res.push(c)})});
+const r=$("res");delete r.dataset.h;
+r.innerHTML=res.map(x=>"<p>"+esc(x).replace(/\u0001/g,"<mark>").replace(/\u0002/g,"</mark>")+"</p>").join("");
+$("empty").hidden=true;
+const w0=s.split(/\s+/).length,s0=Math.max(1,s.split(/[.!?]+/).filter(Boolean).length),w1=res.join(" ").split(/\s+/).length;
+$("k1").textContent=w0;$("k2").textContent=Math.round(w0/s0)+" → "+Math.round(w1/res.length);$("k3").textContent=n;
+$("gloss").innerHTML=Object.keys(used).map(k=>"<dt>"+esc(k)+"</dt><dd>"+esc(used[k])+"</dd>").join("")||"—";
+}
+function say(x){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(x);u.lang=vc();u.rate=+$("rate").value||.9;speechSynthesis.speak(u)}catch(e){}}
+$("say").onclick=()=>{
+const o=$("res");if(o.dataset.h)o.innerHTML=o.dataset.h;if(!o.innerText.trim())return;
+const id=++tok,sp=[],ns=[];let txt="";o.dataset.h=o.innerHTML;
+const w=document.createTreeWalker(o,4);let n;while(n=w.nextNode())ns.push(n);
+ns.forEach(n=>{const f=document.createDocumentFragment();n.nodeValue.split(/(\s+)/).forEach(p=>{if(!p)return;if(/^\s+$/.test(p)){f.appendChild(document.createTextNode(p));txt+=p;return}const s=document.createElement("span");s.className="wd";s.textContent=p;sp.push({e:s,a:txt.length});txt+=p;f.appendChild(s)});txt+=" ";n.parentNode.replaceChild(f,n)});
+try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(txt);u.lang=vc();u.rate=+$("rate").value||.9;let last=null;
+u.onboundary=e=>{if(id!==tok)return;let c=null;sp.forEach(x=>{if(x.a<=e.charIndex)c=x});if(last)last.classList.remove("on");if(c){c.e.classList.add("on");last=c.e}};
+u.onend=u.onerror=()=>{if(id===tok&&o.dataset.h){o.innerHTML=o.dataset.h;delete o.dataset.h}};
+speechSynthesis.speak(u)}catch(e){o.innerHTML=o.dataset.h;delete o.dataset.h}};
+$("stop").onclick=()=>{try{speechSynthesis.cancel()}catch(e){}};
+function showQ(){
+const N=Q.en.length,fin=step>=N;
+$("st").innerHTML=Q.en.map((_,i)=>"<i class='"+(i<step?"d":"")+"'></i>").join("");
+$("stn").textContent=fin?"":t("step")+" "+(step+1)+" / "+N;
+$("ans").hidden=fin;$("listen").hidden=$("speak").hidden=fin;$("sum").innerHTML="";
+$("nl").textContent=fin?t("copy"):t("next");
+if(fin){$("q").textContent=t("done");$("sum").innerHTML=L[lang].map((l,i)=>"<dt>"+l+"</dt><dd>"+esc(ans[i]||"—")+"</dd>").join("")}
+else{$("q").textContent=Q[lang][step];$("ans").value=ans[step]||""}}
+$("listen").onclick=()=>say(Q[lang][step]);
+$("next").onclick=()=>{
+if(step>=Q.en.length){try{navigator.clipboard.writeText(L[lang].map((l,i)=>l+": "+(ans[i]||"")).join("\n"));toast(t("copied"))}catch(e){}return}
+ans[step]=$("ans").value.trim();step++;showQ();if(step<Q.en.length)say(Q[lang][step])};
+$("back").onclick=()=>{if(step>0){if(step<Q.en.length)ans[step]=$("ans").value.trim();step--;showQ()}};
+$("ans").addEventListener("keydown",e=>{if(e.key==="Enter")$("next").click()});
+$("speak").onclick=()=>{
+const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+if(!SR){$("mic").textContent=t("nomic");return}
+const r=new SR();r.lang=vc();$("mic").textContent=t("lis");
+r.onresult=e=>{$("ans").value=e.results[0][0].transcript;$("mic").textContent=""};
+r.onerror=r.onend=()=>{if($("mic").textContent===t("lis"))$("mic").textContent=""};
+try{r.start()}catch(e){$("mic").textContent=t("nomic")}};
+apply();
+})();
+</script>
+</body>
+</html>
